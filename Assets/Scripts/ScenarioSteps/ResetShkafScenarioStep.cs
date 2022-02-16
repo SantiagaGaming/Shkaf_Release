@@ -12,6 +12,7 @@ public class ResetShkafScenarioStep : ScenarioStep
     [SerializeField] private GameObject _key;
     [SerializeField] private GameObject _wire1;
     [SerializeField] private GameObject _wire2;
+
     public override void StartScenarioStep()
     {
         _voicePlayer.StopAudioSource();
@@ -41,20 +42,21 @@ public class ResetShkafScenarioStep : ScenarioStep
         }
        else if(steps==1)
         {
-            TryGetBaseObject("DoorUp").RevertAction();
             StartActionEvent?.Invoke();
-
+            TryGetBaseObject("DoorUp").RevertAction();
+     
         }
         else if(steps ==2)
         {
-            TryGetBaseObject("UpDoorKey2").RevertAction();
             StartActionEvent?.Invoke();
-
+            TryGetBaseObject("UpDoorKey2").RevertAction();
+   
         }
         else if(steps==3)
         {
-            TryGetBaseObject("UpDoorKey1").RevertAction();
             StartActionEvent?.Invoke();
+            TryGetBaseObject("UpDoorKey1").RevertAction();
+         
         }
         else if (steps == 4)
         {
@@ -63,8 +65,9 @@ public class ResetShkafScenarioStep : ScenarioStep
         }
         else if(steps==5)
         {
-            TryGetBaseObject("Battery").RevertAction();
             StartActionEvent?.Invoke();
+            TryGetBaseObject("Battery").RevertAction();
+ 
         }
         else if (steps == 6)
         {
@@ -72,8 +75,9 @@ public class ResetShkafScenarioStep : ScenarioStep
         }
         else if(steps==7)
         {
-            TryGetBaseObject("Door").RevertAction();
             StartActionEvent?.Invoke();
+            TryGetBaseObject("Door").RevertAction();
+
         }
         else if(steps==8)
         {
@@ -83,15 +87,15 @@ public class ResetShkafScenarioStep : ScenarioStep
         }
         else if(steps ==9)
         {
-            TryGetBaseObject("Zamok").RevertAction();
             StartActionEvent?.Invoke();
+            TryGetBaseObject("Zamok").RevertAction();
+    
         }
         else if(steps==10)
         {
-            _key.SetActive(false);
-            TryGetBaseObject("MagnetKey").RevertAction();
             StartActionEvent?.Invoke();
- 
+            TryGetBaseObject("MagnetKey").RevertAction();
+            _key.SetActive(false);
         }
         else if (steps == 11)
         {
@@ -100,9 +104,8 @@ public class ResetShkafScenarioStep : ScenarioStep
         }
         else if(steps==12)
         {
-       
-            TryGetBaseObject("VentBottom").RevertAction();
             StartActionEvent?.Invoke();
+            TryGetBaseObject("VentBottom").RevertAction();
         }
         else if(steps==13)
         {
@@ -110,8 +113,9 @@ public class ResetShkafScenarioStep : ScenarioStep
         }
         else if(steps==14)
         {
-            TryGetBaseObject("VentTop").RevertAction();
             StartActionEvent?.Invoke();
+            TryGetBaseObject("VentTop").RevertAction();
+    
         }
         else if(steps==15)
         {
