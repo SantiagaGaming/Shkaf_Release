@@ -9,18 +9,37 @@ public class DoorObject : BaseObject
     public override void StartAction()
     {
 
-        StartCoroutine(RotateDoor());
+        StartCoroutine(RotateDoor(true));
     }
-    private IEnumerator RotateDoor()
+    public override void RevertAction()
     {
-        int y = 0;
-        while (y <= 95)
+        StartCoroutine(RotateDoor(false));
+    }
+    private IEnumerator RotateDoor(bool value)
+    {
+        if (value)
         {
-            _door.transform.localRotation = Quaternion.Euler(0, y, 0);
-            y++;
-            yield return new WaitForSeconds(0.01f);
+            int y = 0;
+            while (y <= 95)
+            {
+                _door.transform.localRotation = Quaternion.Euler(0, y, 0);
+                y++;
+                yield return new WaitForSeconds(0.01f);
 
+            }
         }
+        else
+        {
+            int y = 95;
+            while (y >= 0)
+            {
+                _door.transform.localRotation = Quaternion.Euler(0, y, 0);
+                y--;
+                yield return new WaitForSeconds(0.01f);
+
+            }
+        }
+
         EndActionEvent?.Invoke();
     }
 }

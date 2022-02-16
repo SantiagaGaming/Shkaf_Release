@@ -18,6 +18,7 @@ public class ScenarioStepsController : MonoBehaviour
 
     private void OnEndScenarioStep()
     {
+        _scenarioSteps[_currentScenarioStep].EndScenarioStepEvent -= OnEndScenarioStep;
         _currentScenarioStep++;
         _scenarioSteps[_currentScenarioStep].StartScenarioStep();
     }

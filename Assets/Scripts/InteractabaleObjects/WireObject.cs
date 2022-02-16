@@ -10,28 +10,51 @@ public class WireObject : BaseObject
 
     public override void StartAction()
     {
-
-        StartCoroutine(MoveWire());
+        StartCoroutine(MoveWire(true));
     }
-    private IEnumerator MoveWire()
+    public override void RevertAction()
     {
-        _wire.SetActive(true);
-        int z = 0;
-        while (z <= 43)
+        StartCoroutine(MoveWire(false));
+    }
+    private IEnumerator MoveWire(bool value)
+    {
+        if(value)
         {
-            transform.position -= new Vector3(0, 0.001f, 0);
-            z++;
-            yield return new WaitForSeconds(0.01f);
+            _wire.SetActive(true);
+            int z = 0;
+            while (z <= 43)
+            {
+                transform.position -= new Vector3(0, 0.001f, 0);
+                z++;
+                yield return new WaitForSeconds(0.01f);
 
+            }
+            int xRot = -17;
+            while (xRot < -3)
+            {
+                _trunk.transform.localRotation = Quaternion.Euler(xRot, 0, 0);
+                xRot++;
+                yield return new WaitForSeconds(0.05f);
+            }
         }
-        int xRot = -17;
-        while (xRot < -3)
+        else
         {
-           _trunk.transform.localRotation = Quaternion.Euler(xRot, 0, 0);
-            xRot++;
-            yield return new WaitForSeconds(0.05f);
+            int xRot = -3;
+            while (xRot > -17)
+            {
+                _trunk.transform.localRotation = Quaternion.Euler(xRot, 0, 0);
+                xRot--;
+                yield return new WaitForSeconds(0.05f);
+            }
+            int z = 43;
+            while (z >= 0)
+            {
+                transform.position += new Vector3(0, 0.001f, 0);
+                z--;
+                yield return new WaitForSeconds(0.01f);
+            }
+            _wire.SetActive(false);
         }
-
         EndActionEvent?.Invoke();
     }
 }

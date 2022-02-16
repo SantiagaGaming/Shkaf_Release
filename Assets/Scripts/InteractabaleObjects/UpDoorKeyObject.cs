@@ -9,25 +9,49 @@ public class UpDoorKeyObject : BaseObject
     public override void StartAction()
     {
 
-        StartCoroutine(MoveKey());
+        StartCoroutine(MoveKey(true));
     }
-    private IEnumerator MoveKey()
+    public override void RevertAction()
+    {
+        StartCoroutine(MoveKey(false));
+    }
+    private IEnumerator MoveKey(bool value)
     {
         _upDoorKey.SetActive(true);
-        int z = 0;
-        while (z <= 7)
+        if(value)
         {
-            transform.position += new Vector3(0,0,- 0.008f);
-            z++;
-            yield return new WaitForSeconds(0.05f);
-
+            int z = 0;
+            while (z <= 7)
+            {
+                transform.position += new Vector3(0, 0, -0.008f);
+                z++;
+                yield return new WaitForSeconds(0.05f);
+            }
+            int xRot = 0;
+            while (xRot < 90)
+            {
+                _upDoorKey.transform.localRotation = Quaternion.Euler(xRot, 0, 0);
+                xRot++;
+                yield return new WaitForSeconds(0.01f);
+            }
         }
-        int xRot = 0;
-        while (xRot < 90)
+        else
         {
-            _upDoorKey.transform.localRotation = Quaternion.Euler(xRot, 0, 0);
-            xRot++;
-            yield return new WaitForSeconds(0.01f);
+            int xRot = 90;
+            while (xRot > 0)
+            {
+                _upDoorKey.transform.localRotation = Quaternion.Euler(xRot, 0, 0);
+                xRot--;
+                yield return new WaitForSeconds(0.01f);
+            }
+            int z = 7;
+            while (z >= 0)
+            {
+                transform.position -= new Vector3(0, 0, -0.008f);
+                z--;
+                yield return new WaitForSeconds(0.05f);
+
+            }
         }
         _upDoorKey.SetActive(false);
 

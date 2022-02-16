@@ -8,18 +8,38 @@ public class VentObject : BaseObject
     public override void StartAction()
     {
      
-        StartCoroutine(RotateVent());
+        StartCoroutine(RotateVent(true));
     }
-    private IEnumerator RotateVent()
+    public override void RevertAction()
     {
-        int x = 0;
-        while (x <= 90)
+        StartCoroutine(RotateVent(false));
+    }
+    private IEnumerator RotateVent(bool value)
+    {
+        if(value)
         {
-            transform.localRotation = Quaternion.Euler(x, 0, 0);
-            x++;
-            yield return new WaitForSeconds(0.01f);
-         
+            int x = 0;
+            while (x <= 90)
+            {
+                transform.localRotation = Quaternion.Euler(x, 0, 0);
+                x++;
+                yield return new WaitForSeconds(0.01f);
+
+            }
         }
+        else
+        {
+            int x = 90;
+            while (x >= 0)
+            {
+                transform.localRotation = Quaternion.Euler(x, 0, 0);
+                x--;
+                yield return new WaitForSeconds(0.01f);
+
+            }
+        }
+
+
         EndActionEvent?.Invoke();
     }
 }

@@ -11,6 +11,10 @@ public abstract class BaseObject : MonoBehaviour
     {
        
     }
+    public virtual void RevertAction()
+    {
+
+    }
     public override string ToString()
     {
         return _objectName;

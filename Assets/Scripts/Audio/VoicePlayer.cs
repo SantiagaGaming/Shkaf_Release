@@ -7,7 +7,7 @@ public class VoicePlayer : MonoBehaviour
     [SerializeField]private AudioClip _startOpenDoorVoice, _upLocekerVoice,_downLockerVoice, _midLockerVoice, _magnetVoice,_openDoorVoice, _doorIsOpenVoice,
         _pickobjectsDoorVoice, _wrongItemVoice, _klemmVoice, _pickObjectsVoice,_klemmPowerVoice, _batteryPowerVoice, _batteryPowerOnVoice,
         _goToplateVoice,_connectOscilVoice, _oscilPlateConnectVoice, _blackWireConnectVoice,_redWireConnectVoice, _wiresConnectedDoneVoice,_upDoorWalkVoice,
-        _circleKeyOpenDoorVoice;
+        _circleKeyOpenDoorVoice, _goToTerristerVoice, _resetShkavVoice,_endTrainingVoice;
     private AudioSource _audioSource;
    
     private void Start()
@@ -106,6 +106,18 @@ public class VoicePlayer : MonoBehaviour
     public void PlayCircleKeyOpenDoorVoice()
     {
         _audioSource.PlayOneShot(_circleKeyOpenDoorVoice);
+    }
+    public void PlayGoToTerristerVoice()
+    {
+        _audioSource.PlayOneShot(_goToTerristerVoice);
+    }
+    public void PlayResetShkafVoice()
+    {
+        _audioSource.PlayOneShot(_resetShkavVoice);
+    }
+    public void PlayEndTrainingVoice()
+    {
+        _audioSource.PlayOneShot(_endTrainingVoice);
     }
 
 

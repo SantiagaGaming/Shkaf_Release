@@ -7,23 +7,47 @@ public class MagnetObject : BaseObject
     public GameObject _magnetRod;
     public override void StartAction()
     {
-        StartCoroutine(MoveMagnet());
+        StartCoroutine(MoveMagnet(true));
     }
-    private IEnumerator MoveMagnet()
+    public override void RevertAction()
     {
-        int x = 0;
-        while (x<25)
+        StartCoroutine(MoveMagnet(false));
+    }
+    private IEnumerator MoveMagnet(bool value)
+    {
+        if(value)
         {
-            transform.position += new Vector3(0.01f, 0, 0);
-            yield return new WaitForSeconds(0.02f);
-            x++;
+            int x = 0;
+            while (x < 25)
+            {
+                transform.position += new Vector3(0.01f, 0, 0);
+                yield return new WaitForSeconds(0.02f);
+                x++;
+            }
+            while (x < 32)
+            {
+                _magnetRod.transform.position -= new Vector3(0.001f, 0, 0);
+                yield return new WaitForSeconds(0.02f);
+                x++;
+            }
         }
-        while(x<32)
+        else
         {
-            _magnetRod.transform.position -= new Vector3(0.001f, 0, 0);
-            yield return new WaitForSeconds(0.02f);
-            x++;
+            int x = 32;
+            while (x > 28)
+            {
+                _magnetRod.transform.position += new Vector3(0.001f, 0, 0);
+                yield return new WaitForSeconds(0.02f);
+                x--;
+            }
+            while (x > 0)
+            {
+                transform.position -= new Vector3(0.01f, 0, 0);
+                yield return new WaitForSeconds(0.02f);
+                x--;
+            }
         }
+
         EndActionEvent?.Invoke();
     
     }

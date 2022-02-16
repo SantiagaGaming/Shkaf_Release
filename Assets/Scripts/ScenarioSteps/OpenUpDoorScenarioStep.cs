@@ -8,6 +8,9 @@ public class OpenUpDoorScenarioStep : ScenarioStep
     [SerializeField] private NextStepObject _upDoorObject;
     [SerializeField] private CameraSwitcher _cameraSwitcher;
     [SerializeField] private FlyCamera _flyCamera;
+    [SerializeField] private PlayerCanvasViev _playerCnvasViev;
+
+    private int _currentImage;
 
     public override void StartScenarioStep()
     {
@@ -57,7 +60,25 @@ public class OpenUpDoorScenarioStep : ScenarioStep
             TryGetBaseObject("DoorUp").StartAction(); ;
             StartActionEvent?.Invoke();
         }
-       
+        else if(steps==5)
+        {
+            _playerCnvasViev.ShowOscilImage(true);
+            _playerCnvasViev.ChangeOscilSprite(_currentImage);
+
+        }
+        else if(steps<=11)
+        {
+            _currentImage++;
+            _playerCnvasViev.ChangeOscilSprite(_currentImage);
+        }
+    else if(steps==12)
+        {
+            _playerCnvasViev.ShowOscilImage(false);
+            _cameraSwitcher.SwitchCamera(false);
+            EndScenarioStepEvent?.Invoke();
+        }
+
+
         steps++;
     }
 }

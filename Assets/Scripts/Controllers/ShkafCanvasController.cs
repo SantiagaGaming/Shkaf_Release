@@ -35,6 +35,7 @@ public class ShkafCanvasController : MonoBehaviour
     }
     private void OnEnableNextButton()
     {
+
         _shkafCanvasViev.NextButtonEnabler(true);
     }
     private void OnDisableNextButton()

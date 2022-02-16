@@ -8,18 +8,37 @@ public class TumblerObject : BaseObject
     public override void StartAction()
     {
 
-        StartCoroutine(RotateTumbler());
+        StartCoroutine(RotateTumbler(true));
     }
-    private IEnumerator RotateTumbler()
+    public override void RevertAction()
     {
-        int x = 0;
-        while (x <= 105)
+        StartCoroutine(RotateTumbler(false));
+    }
+    private IEnumerator RotateTumbler(bool value)
+    {
+        if(value)
         {
-            transform.localRotation = Quaternion.Euler(0, 0, -x);
-            x++;
-            yield return new WaitForSeconds(0.01f);
+            int x = 0;
+            while (x <= 105)
+            {
+                transform.localRotation = Quaternion.Euler(0, 0, -x);
+                x++;
+                yield return new WaitForSeconds(0.01f);
 
+            }
         }
+        else
+        {
+            int x = 105;
+            while (x >= 0)
+            {
+                transform.localRotation = Quaternion.Euler(0, 0, x);
+                x--;
+                yield return new WaitForSeconds(0.01f);
+
+            }
+        }
+
         EndActionEvent?.Invoke();
     }
 }

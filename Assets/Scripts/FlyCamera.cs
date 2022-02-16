@@ -12,6 +12,9 @@ public class FlyCamera : MonoBehaviour
     [SerializeField] private Transform _oscilPosition;
     [SerializeField] private Transform _oscilx2x3Position;
     [SerializeField] private Transform _upDoorPosition;
+    [SerializeField] private Transform _shkafBackPosition;
+    [SerializeField] private Transform _terristerPosition;
+    [SerializeField] private Transform _terristerMeasurePosition;
     private Transform _newPos;
     private void Start()
     {
@@ -61,6 +64,18 @@ public class FlyCamera : MonoBehaviour
     public void FlyToUpDoorPostition()
     {
         _newPos = _upDoorPosition;
+    }
+    public void FlyToShkafBackPosition()
+    {
+        _newPos = _shkafBackPosition;
+    }
+    public void FlyToTerristerPosition()
+    {
+        _newPos = _terristerPosition;
+    }
+    public void FlyToTerristerMeasurePosition()
+    {
+        _newPos = _terristerMeasurePosition;
     }
 
 }
