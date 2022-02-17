@@ -21,11 +21,11 @@ public class WireObject : BaseObject
         if(value)
         {
             _wire.SetActive(true);
-            int z = 0;
-            while (z <= 43)
+            int y = 0;
+            while (y <= 43)
             {
                 transform.position -= new Vector3(0, 0.001f, 0);
-                z++;
+                y++;
                 yield return new WaitForSeconds(0.01f);
 
             }
@@ -46,13 +46,14 @@ public class WireObject : BaseObject
                 xRot--;
                 yield return new WaitForSeconds(0.05f);
             }
-            int z = 43;
-            while (z >= 0)
+            int y = 43;
+            while (y >= 0)
             {
                 transform.position += new Vector3(0, 0.001f, 0);
-                z--;
+                y--;
                 yield return new WaitForSeconds(0.01f);
             }
+            transform.position -= new Vector3(0, 0, 0.06f);
             _wire.SetActive(false);
         }
         EndActionEvent?.Invoke();

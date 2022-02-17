@@ -8,6 +8,7 @@ public class PlayerCanvasViev : MonoBehaviour
     [SerializeField] private GameObject _pickablePanel;
     [SerializeField] private Text _pickableText;
     [SerializeField] private GameObject _oscilImage;
+    [SerializeField] private GameObject _handImage;
     [SerializeField] private Sprite []_oscilSprite;
     public void EnablePickablePanel(bool value)
     {
@@ -20,6 +21,10 @@ public class PlayerCanvasViev : MonoBehaviour
     public void ShowOscilImage(bool value)
     {
         _oscilImage.SetActive(value);
+    }
+    public void ShowHandImage(bool value)
+    {
+        _handImage.SetActive(value);
     }
     public void ChangeOscilSprite(int number)
     {

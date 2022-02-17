@@ -8,7 +8,10 @@ public class OpenUpDoorScenarioStep : ScenarioStep
     [SerializeField] private NextStepObject _upDoorObject;
     [SerializeField] private CameraSwitcher _cameraSwitcher;
     [SerializeField] private FlyCamera _flyCamera;
-    [SerializeField] private PlayerCanvasViev _playerCnvasViev;
+    [SerializeField] private PlayerCanvasViev _playerCanvasViev;
+    [SerializeField] private GameObject _upLock;
+    [SerializeField] private GameObject _downLock;
+
 
     private int _currentImage;
 
@@ -42,13 +45,15 @@ public class OpenUpDoorScenarioStep : ScenarioStep
         }
        else if(steps ==1)
         {
-            TryGetBaseObject("UpDoorKey1").StartAction(); ;
+            TryGetBaseObject("UpDoorKey1").StartAction(); 
             StartActionEvent?.Invoke();
+            _upLock.transform.localRotation = Quaternion.Euler(90, 0, 0);
         }
         else if(steps == 2)
         {
-            TryGetBaseObject("UpDoorKey2").StartAction(); ;
+            TryGetBaseObject("UpDoorKey2").StartAction(); 
             StartActionEvent?.Invoke();
+            _downLock.transform.localRotation = Quaternion.Euler(90, 0, 0);
         }
         else if(steps==3)
         {
@@ -57,28 +62,91 @@ public class OpenUpDoorScenarioStep : ScenarioStep
         }
         else if(steps==4)
         {
-            TryGetBaseObject("DoorUp").StartAction(); ;
+            TryGetBaseObject("DoorUp").StartAction();
             StartActionEvent?.Invoke();
         }
         else if(steps==5)
         {
-            _playerCnvasViev.ShowOscilImage(true);
-            _playerCnvasViev.ChangeOscilSprite(_currentImage);
+            _flyCamera.FlyToUpDoorCloserPosition();
+            _playerCanvasViev.ShowHandImage(true);
+        }
+        else if (steps == 6)
+        {
+            _playerCanvasViev.ShowHandImage(false);
+            TryGetBaseObject("Button").StartAction();
+            StartActionEvent?.Invoke();
+        }
+        else if (steps == 7)
+        {
+            _playerCanvasViev.ShowOscilImage(true);
+            _playerCanvasViev.ChangeOscilSprite(_currentImage);
 
         }
-        else if(steps<=11)
+        else if (steps <= 13)
         {
             _currentImage++;
-            _playerCnvasViev.ChangeOscilSprite(_currentImage);
+            _playerCanvasViev.ChangeOscilSprite(_currentImage);
         }
-    else if(steps==12)
+
+        else if(steps==14)
         {
-            _playerCnvasViev.ShowOscilImage(false);
+            _playerCanvasViev.ShowOscilImage(false);
+            _currentImage = 0;
+            _flyCamera.FlyToOscilx2x3();
+        }
+        else if(steps==15)
+        {
+            TryGetBaseObject("WireBlack").RevertAction();
+            StartActionEvent?.Invoke();
+        }
+        else if(steps==16)
+        {
+            TryGetBaseObject("WireRed").RevertAction();
+            StartActionEvent?.Invoke();
+        }
+        else if (steps == 17)
+        {
+            TryGetBaseObject("WireBlack").StartAction();
+            StartActionEvent?.Invoke();
+        }
+        else if (steps == 18)
+        {
+            TryGetBaseObject("WireRed").StartAction();
+            StartActionEvent?.Invoke();
+        }
+        else if(steps==19)
+        {
+            _flyCamera.FlyToUpDoorCloserPosition();
+        
+        }
+        else if(steps==20)
+        {
+            _playerCanvasViev.ShowHandImage(true);
+        }
+        else if(steps==21)
+        {
+            _playerCanvasViev.ShowHandImage(false);
+            TryGetBaseObject("Button").StartAction();
+            StartActionEvent?.Invoke();
+        }
+
+        else if(steps==22)
+        {
+            _playerCanvasViev.ShowOscilImage(true);
+            _playerCanvasViev.ChangeOscilSprite(_currentImage);
+
+        }
+        else if(steps<=28)
+        {
+            _currentImage++;
+            _playerCanvasViev.ChangeOscilSprite(_currentImage);
+        }
+    else if(steps==29)
+        {
+            _playerCanvasViev.ShowOscilImage(false);
             _cameraSwitcher.SwitchCamera(false);
             EndScenarioStepEvent?.Invoke();
         }
-
-
         steps++;
     }
 }

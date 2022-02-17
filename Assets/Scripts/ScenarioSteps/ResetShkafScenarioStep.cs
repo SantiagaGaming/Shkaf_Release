@@ -12,7 +12,8 @@ public class ResetShkafScenarioStep : ScenarioStep
     [SerializeField] private GameObject _key;
     [SerializeField] private GameObject _wire1;
     [SerializeField] private GameObject _wire2;
-
+    [SerializeField] private GameObject _upLock;
+    [SerializeField] private GameObject _downLock;
     public override void StartScenarioStep()
     {
         _voicePlayer.StopAudioSource();
@@ -50,13 +51,15 @@ public class ResetShkafScenarioStep : ScenarioStep
         {
             StartActionEvent?.Invoke();
             TryGetBaseObject("UpDoorKey2").RevertAction();
-   
+            _downLock.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
         }
         else if(steps==3)
         {
             StartActionEvent?.Invoke();
             TryGetBaseObject("UpDoorKey1").RevertAction();
-         
+            _upLock.transform.localRotation = Quaternion.Euler(0, 0, 0);
+
         }
         else if (steps == 4)
         {
