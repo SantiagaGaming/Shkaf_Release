@@ -60,88 +60,94 @@ public class OpenUpDoorScenarioStep : ScenarioStep
             _voicePlayer.StopAudioSource();
             _voicePlayer.PlayOpenDoorVoice();
         }
-        else if(steps==4)
+        else if(steps ==4)
+        {
+            _flyCamera.FlyToUpDoorFartherPosition();
+        }
+        else if(steps==5)
         {
             TryGetBaseObject("DoorUp").StartAction();
             StartActionEvent?.Invoke();
         }
-        else if(steps==5)
+        else if(steps==6)
         {
             _flyCamera.FlyToUpDoorCloserPosition();
             _playerCanvasViev.ShowHandImage(true);
         }
-        else if (steps == 6)
+        else if (steps == 7)
         {
             _playerCanvasViev.ShowHandImage(false);
-            TryGetBaseObject("Button").StartAction();
+            //TryGetBaseObject("Button").StartAction();
+            TryGetBaseObject("Hand").StartAction();
             StartActionEvent?.Invoke();
         }
-        else if (steps == 7)
+        else if (steps == 8)
         {
             _playerCanvasViev.ShowOscilImage(true);
             _playerCanvasViev.ChangeOscilSprite(_currentImage);
 
         }
-        else if (steps <= 13)
+        else if (steps <= 14)
         {
             _currentImage++;
             _playerCanvasViev.ChangeOscilSprite(_currentImage);
         }
 
-        else if(steps==14)
+        else if(steps==15)
         {
             _playerCanvasViev.ShowOscilImage(false);
             _currentImage = 0;
             _flyCamera.FlyToOscilx2x3();
         }
-        else if(steps==15)
+        else if(steps==16)
         {
             TryGetBaseObject("WireBlack").RevertAction();
             StartActionEvent?.Invoke();
         }
-        else if(steps==16)
+        else if(steps==17)
         {
             TryGetBaseObject("WireRed").RevertAction();
             StartActionEvent?.Invoke();
         }
-        else if (steps == 17)
+        else if (steps == 18)
         {
             TryGetBaseObject("WireBlack").StartAction();
             StartActionEvent?.Invoke();
         }
-        else if (steps == 18)
+        else if (steps == 19)
         {
             TryGetBaseObject("WireRed").StartAction();
             StartActionEvent?.Invoke();
         }
-        else if(steps==19)
+        else if(steps==20)
         {
             _flyCamera.FlyToUpDoorCloserPosition();
         
         }
-        else if(steps==20)
+        else if(steps==21)
         {
             _playerCanvasViev.ShowHandImage(true);
         }
-        else if(steps==21)
+        else if(steps==22)
         {
             _playerCanvasViev.ShowHandImage(false);
-            TryGetBaseObject("Button").StartAction();
+            TryGetBaseObject("Hand").StartAction();
+           // TryGetBaseObject("Button").StartAction();
             StartActionEvent?.Invoke();
         }
 
-        else if(steps==22)
+        else if(steps==23)
         {
             _playerCanvasViev.ShowOscilImage(true);
             _playerCanvasViev.ChangeOscilSprite(_currentImage);
 
         }
-        else if(steps<=28)
+        else if(steps<=29)
         {
             _currentImage++;
             _playerCanvasViev.ChangeOscilSprite(_currentImage);
         }
-    else if(steps==29)
+    else if(steps==30)
         {
             _playerCanvasViev.ShowOscilImage(false);
             _cameraSwitcher.SwitchCamera(false);

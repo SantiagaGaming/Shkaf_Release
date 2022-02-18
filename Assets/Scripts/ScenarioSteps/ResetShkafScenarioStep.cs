@@ -39,7 +39,7 @@ public class ResetShkafScenarioStep : ScenarioStep
     {
         if (steps == 0)
         {
-            _flyCamera.FlyToUpDoorPostition();
+            _flyCamera.FlyToUpDoorFartherPosition();
         }
        else if(steps==1)
         {
@@ -49,82 +49,86 @@ public class ResetShkafScenarioStep : ScenarioStep
         }
         else if(steps ==2)
         {
+            _flyCamera.FlyToUpDoorPostition();
+        }
+        else if(steps ==3)
+        {
             StartActionEvent?.Invoke();
             TryGetBaseObject("UpDoorKey2").RevertAction();
             _downLock.transform.localRotation = Quaternion.Euler(0, 0, 0);
 
         }
-        else if(steps==3)
+        else if(steps==4)
         {
             StartActionEvent?.Invoke();
             TryGetBaseObject("UpDoorKey1").RevertAction();
             _upLock.transform.localRotation = Quaternion.Euler(0, 0, 0);
 
         }
-        else if (steps == 4)
+        else if (steps == 5)
         {
             _flyCamera.FlyToBattery();
    
         }
-        else if(steps==5)
+        else if(steps==6)
         {
             StartActionEvent?.Invoke();
             TryGetBaseObject("Battery").RevertAction();
  
         }
-        else if (steps == 6)
+        else if (steps == 7)
         {
             _flyCamera.FlyToOpenDoor();
         }
-        else if(steps==7)
+        else if(steps==8)
         {
             StartActionEvent?.Invoke();
             TryGetBaseObject("Door").RevertAction();
 
         }
-        else if(steps==8)
+        else if(steps==9)
         {
             _wire1.SetActive(false);
             _wire2.SetActive(false);
             _flyCamera.FlyToLocker();
         }
-        else if(steps ==9)
+        else if(steps ==10)
         {
             StartActionEvent?.Invoke();
             TryGetBaseObject("Zamok").RevertAction();
     
         }
-        else if(steps==10)
+        else if(steps==11)
         {
             StartActionEvent?.Invoke();
             TryGetBaseObject("MagnetKey").RevertAction();
             _key.SetActive(false);
         }
-        else if (steps == 11)
+        else if (steps == 12)
         {
             _magnet.SetActive(false);
             _flyCamera.FlyToDownBolt();
         }
-        else if(steps==12)
+        else if(steps==13)
         {
             StartActionEvent?.Invoke();
             TryGetBaseObject("VentBottom").RevertAction();
         }
-        else if(steps==13)
+        else if(steps==14)
         {
             _flyCamera.FlyToUpBolt();
         }
-        else if(steps==14)
+        else if(steps==15)
         {
             StartActionEvent?.Invoke();
             TryGetBaseObject("VentTop").RevertAction();
     
         }
-        else if(steps==15)
+        else if(steps==16)
         {
             _flyCamera.FlyToOpenDoor();
         }
-        else if(steps==16)
+        else if(steps==17)
         {
             _cameraSwitcher.SwitchCamera(false);
             EndScenarioStepEvent?.Invoke();

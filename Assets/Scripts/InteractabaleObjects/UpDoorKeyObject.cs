@@ -34,9 +34,24 @@ public class UpDoorKeyObject : BaseObject
                 xRot++;
                 yield return new WaitForSeconds(0.01f);
             }
+       
+            while (z >= 0)
+            {
+                transform.position -= new Vector3(0, 0, -0.008f);
+                z--;
+                yield return new WaitForSeconds(0.05f);
+            }
         }
         else
         {
+            int z = 0;
+            while (z <= 8)
+            {
+                transform.position -= new Vector3(0, 0, 0.008f);
+                z++;
+                yield return new WaitForSeconds(0.05f);
+            }
+
             int xRot = 90;
             while (xRot > 0)
             {
@@ -44,7 +59,7 @@ public class UpDoorKeyObject : BaseObject
                 xRot--;
                 yield return new WaitForSeconds(0.01f);
             }
-            int z = 7;
+            
             while (z >= 0)
             {
                 transform.position -= new Vector3(0, 0, -0.008f);

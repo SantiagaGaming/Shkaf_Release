@@ -34,12 +34,7 @@ public class MagnetObject : BaseObject
         else
         {
             int x = 32;
-            while (x > 28)
-            {
-                _magnetRod.transform.position += new Vector3(0.001f, 0, 0);
-                yield return new WaitForSeconds(0.02f);
-                x--;
-            }
+
             while (x > 0)
             {
                 transform.position -= new Vector3(0.01f, 0, 0);
