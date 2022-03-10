@@ -1,4 +1,5 @@
 using AosSdk.Core.Interfaces;
+using AosSdk.Core.Player.Pointer;
 using UnityEngine;
 
 namespace AosSdk.Examples
@@ -9,19 +10,23 @@ namespace AosSdk.Examples
 
         public event CapEventHandler OnCapOpened;
     
-        public void OnClicked()
+        public void OnClicked(InteractHand interactHand)
         {
             OnCapOpened?.Invoke();
         }
 
-        public void OnHoverIn()
+        public void OnHoverIn(InteractHand interactHand)
         {
             GetComponent<Renderer>().material.color /= 2;
         }
 
-        public void OnHoverOut()
+        public void OnHoverOut(InteractHand interactHand)
         {
             GetComponent<Renderer>().material.color *= 2;
         }
+
+        public bool IsHoverable { get; set; } = true;
+        
+        public bool IsClickable { get; set; }  = true;
     }
 }

@@ -1,4 +1,4 @@
-using AosSdk.Core.Scripts;
+using AosSdk.Core.Utils;
 using UnityEngine;
 
 namespace AosSdk.Examples

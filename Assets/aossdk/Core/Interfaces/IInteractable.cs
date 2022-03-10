@@ -1,13 +1,22 @@
+using AosSdk.Core.Player.Pointer;
+
 namespace AosSdk.Core.Interfaces
 {
-    public interface IClickAble
+    public interface IClickAble : IInteractable
     {
-        void OnClicked();
+        void OnClicked(InteractHand interactHand);
+        public bool IsClickable { get; set; }
     }
-    
-    public interface IHoverAble
+
+    public interface IHoverAble : IInteractable
     {
-        void OnHoverIn();
-        void OnHoverOut();
+        void OnHoverIn(InteractHand interactHand);
+        void OnHoverOut(InteractHand interactHand);
+
+        public bool IsHoverable { get; set; }
+    }
+
+    public interface IInteractable
+    {
     }
 }

@@ -1,6 +1,8 @@
 using AosSdk.Core.Interfaces;
-using AosSdk.Core.Scripts;
+using AosSdk.Core.Player.Pointer;
+using AosSdk.Core.Utils;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace AosSdk.Examples
 {
@@ -21,17 +23,25 @@ namespace AosSdk.Examples
 
         [AosEvent(name: "Тестовое событие")] 
         public event AosEventHandler OnEventHappened;
+        
+        [AosEvent(name: "Тестовое событие cо строковым атрибутом")] 
+        public event AosEventHandlerWithAttribute OnEventWithStringAttributeHappened;
 
         private void Start()
         {
             OnEventHappened += () => { Debug.Log("Test class event fired"); };
+            OnEventWithStringAttributeHappened += stringAttribute => { Debug.Log($"Test class event with string parameter \"{stringAttribute}\" fired"); };
         }
 
         private void Update()
         {
-            if (Input.GetKeyUp(KeyCode.T))
+            if (Keyboard.current.tKey.wasPressedThisFrame)
             {
                 OnEventHappened?.Invoke();
+            }
+            if (Keyboard.current.sKey.wasPressedThisFrame)
+            {
+                OnEventWithStringAttributeHappened?.Invoke("I can be any type!");
             }
         }
 
@@ -40,20 +50,31 @@ namespace AosSdk.Examples
         {
             Debug.Log($"first = {first}, second = {second}, third = {third}");
         }
+        
+        [AosAction("Non-void action")]
+        public bool NonVoidAction()
+        {
+            return true;
+        }
 
-        public void OnClicked()
+        public void OnClicked(InteractHand interactHand)
         {
             Debug.Log($"{gameObject.name} clicked");
         }
 
-        public void OnHoverIn()
+        public bool IsClickable { get; set; } = true;
+        public bool IsHoverable { get; set; } = true;
+
+        public void OnHoverIn(InteractHand interactHand)
         {
             GetComponent<Renderer>().material.color /= 2;
         }
 
-        public void OnHoverOut()
+        public void OnHoverOut(InteractHand interactHand)
         {
             GetComponent<Renderer>().material.color *= 2;
         }
+
+        
     }
 }
