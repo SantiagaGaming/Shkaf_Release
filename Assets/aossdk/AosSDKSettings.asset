@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af2b1e4317e2fa45ae6121df5380749, type: 3}
   m_Name: AosSDKSettings
   m_EditorClassIdentifier: 
-  launchMode: 1
+  launchMode: 0
   socketPort: 8080
   walkSpeed: 4
   runSpeed: 8

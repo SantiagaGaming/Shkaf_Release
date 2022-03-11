@@ -18,6 +18,7 @@ public class UpDoorKeyObject : BaseObject
     private IEnumerator MoveKey(bool value)
     {
         _upDoorKey.SetActive(true);
+        _canAction = false;
         if(value)
         {
             int z = 0;
@@ -31,6 +32,7 @@ public class UpDoorKeyObject : BaseObject
             while (xRot < 90)
             {
                 _upDoorKey.transform.localRotation = Quaternion.Euler(xRot, 0, 0);
+                transform.localRotation = Quaternion.Euler(xRot, 0, 0);
                 xRot++;
                 yield return new WaitForSeconds(0.01f);
             }
@@ -56,6 +58,7 @@ public class UpDoorKeyObject : BaseObject
             while (xRot > 0)
             {
                 _upDoorKey.transform.localRotation = Quaternion.Euler(xRot, 0, 0);
+                transform.localRotation = Quaternion.Euler(xRot, 0, 0);
                 xRot--;
                 yield return new WaitForSeconds(0.01f);
             }
@@ -69,6 +72,7 @@ public class UpDoorKeyObject : BaseObject
             }
         }
         _upDoorKey.SetActive(false);
+        _canAction = true;
 
         EndActionEvent?.Invoke();
     }

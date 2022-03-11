@@ -17,6 +17,7 @@ public class DoorObject : BaseObject
     }
     private IEnumerator RotateDoor(bool value)
     {
+        _canAction = false;
         if (value)
         {
             int y = 0;
@@ -39,7 +40,7 @@ public class DoorObject : BaseObject
 
             }
         }
-
+        _canAction = true;
         EndActionEvent?.Invoke();
     }
 }
