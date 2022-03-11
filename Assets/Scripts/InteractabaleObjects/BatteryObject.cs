@@ -5,6 +5,7 @@ using UnityEngine;
 public class BatteryObject : BaseObject
 {
     [SerializeField] private GameObject _battery;
+    [SerializeField] private GameObject _batteryObj;
     public override void StartAction()
     {
 
@@ -16,15 +17,14 @@ public class BatteryObject : BaseObject
     }
     private IEnumerator Move(bool value)
     {
-        _battery.SetActive(true);
-    
+        _batteryObj.SetActive(true);
         int x = 0;
         while (x <= 26)
         {
      if(value)
-            transform.position += new Vector3(0.001f,0 , 0);
+                _battery.transform.position += new Vector3(0.001f,0 , 0);
      else
-                transform.position -= new Vector3(0.001f, 0, 0);
+                _battery.transform.position -= new Vector3(0.001f, 0, 0);
             x++;
             yield return new WaitForSeconds(0.01f);
  
@@ -32,6 +32,6 @@ public class BatteryObject : BaseObject
         }
         EndActionEvent?.Invoke();
         if (!value)
-            _battery.SetActive(false);
+            _batteryObj.SetActive(false);
     }
 }

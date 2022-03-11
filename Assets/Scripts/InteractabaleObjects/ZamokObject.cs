@@ -22,6 +22,7 @@ public class ZamokObject : BaseObject
     {
         if (value)
         {
+            _key.SetActive(true);
             int smallX = 0;
             int bigX;
             int bigZ;
@@ -96,6 +97,7 @@ public class ZamokObject : BaseObject
                 keyX--;
                 yield return new WaitForSeconds(0.01f);
             }
+            _key.SetActive(false);
             while (smallX >= 0)
             {
                 _smallHandle.transform.localRotation = Quaternion.Euler(-smallX, 0, 0);

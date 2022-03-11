@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class MagnetObject : BaseObject
 {
-    public GameObject _magnetRod;
+    [SerializeField] private GameObject _magnetRod;
+    [SerializeField] private GameObject _magnet;
+    
     public override void StartAction()
     {
         StartCoroutine(MoveMagnet(true));
@@ -17,10 +19,11 @@ public class MagnetObject : BaseObject
     {
         if(value)
         {
+            _magnet.SetActive(true);
             int x = 0;
             while (x < 25)
             {
-                transform.position += new Vector3(0.01f, 0, 0);
+                _magnet.transform.position += new Vector3(0.01f, 0, 0);
                 yield return new WaitForSeconds(0.02f);
                 x++;
             }
@@ -33,15 +36,17 @@ public class MagnetObject : BaseObject
         }
         else
         {
-            int x = 32;
+            int x = 25;
 
             while (x > 0)
             {
-                transform.position -= new Vector3(0.01f, 0, 0);
+                _magnet.transform.position -= new Vector3(0.01f, 0, 0);
                 yield return new WaitForSeconds(0.02f);
                 x--;
             }
+            _magnet.SetActive(false);
         }
+
 
         EndActionEvent?.Invoke();
     

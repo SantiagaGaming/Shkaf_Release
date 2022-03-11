@@ -21,7 +21,7 @@ public class TumblerObject : BaseObject
             int x = 0;
             while (x <= 105)
             {
-                transform.localRotation = Quaternion.Euler(0, 0, -x);
+                _temblers.transform.localRotation = Quaternion.Euler(0, 0, -x);
                 x++;
                 yield return new WaitForSeconds(0.01f);
 
@@ -32,7 +32,7 @@ public class TumblerObject : BaseObject
             int x = 105;
             while (x >= 0)
             {
-                transform.localRotation = Quaternion.Euler(0, 0, x);
+                _temblers.transform.localRotation = Quaternion.Euler(0, 0, -x);
                 x--;
                 yield return new WaitForSeconds(0.01f);
 
