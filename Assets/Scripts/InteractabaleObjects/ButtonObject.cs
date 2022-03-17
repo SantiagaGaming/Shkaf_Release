@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ButtonObject : BaseObject
 {
-
     public override void StartAction()
     {
 
@@ -27,8 +26,6 @@ public class ButtonObject : BaseObject
             x--;
 
         }
-        EndActionEvent?.Invoke();
-
     }
 }
 

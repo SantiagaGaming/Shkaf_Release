@@ -8,8 +8,6 @@ using UnityEngine.Events;
 
 public abstract class BaseObject : MonoBehaviour, IClickAble, IHoverAble
 {
-    [SerializeField] private string _objectName;
-    public UnityAction EndActionEvent;
     public bool IsClickable { get; set; } = true;
     public bool IsHoverable { get; set; } = true;
     protected bool _action = true;
@@ -22,10 +20,6 @@ public abstract class BaseObject : MonoBehaviour, IClickAble, IHoverAble
     public virtual void RevertAction()
     {
 
-    }
-    public override string ToString()
-    {
-        return _objectName;
     }
     public void OnClicked(InteractHand interactHand)
     {

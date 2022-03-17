@@ -31,7 +31,6 @@ public class BatteryObject : BaseObject
  
   
         }
-        EndActionEvent?.Invoke();
         if (!value)
             _batteryObj.SetActive(false);
         _canAction = true;

@@ -41,6 +41,5 @@ public class DoorObject : BaseObject
             }
         }
         _canAction = true;
-        EndActionEvent?.Invoke();
     }
 }

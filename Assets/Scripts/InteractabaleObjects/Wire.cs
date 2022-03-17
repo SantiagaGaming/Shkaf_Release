@@ -2,23 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WireObject : BaseObject
+public class Wire : MonoBehaviour
 {
     [SerializeField] private GameObject _wire;
     [SerializeField] private GameObject _trunk;
 
+    private Transform _newWirePosition;
 
-    public override void StartAction()
+    private bool _change = true;
+
+    public void StartAction()
     {
+        if(_change)
+        {
+        transform.position = _newWirePosition.position;
         StartCoroutine(MoveWire(true));
+        }
     }
-    public override void RevertAction()
+    public void RevertAction()
     {
+        if(_change)
         StartCoroutine(MoveWire(false));
     }
     private IEnumerator MoveWire(bool value)
     {
-        if(value)
+        _change = false;
+        if (value)
         {
             _wire.SetActive(true);
             int y = 0;
@@ -56,7 +65,11 @@ public class WireObject : BaseObject
             transform.position -= new Vector3(0, 0, 0.06f);
             _wire.SetActive(false);
         }
-        EndActionEvent?.Invoke();
+        _change = true;
+    }
+    public void SetNewWirePosition(Transform newpos)
+    {
+        _newWirePosition = newpos;
     }
 }
 

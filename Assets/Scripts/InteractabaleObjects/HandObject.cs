@@ -29,6 +29,5 @@ public class HandObject : BaseObject
             yield return new WaitForSeconds(0.06f);
         }
         _hand.SetActive(false);
-        EndActionEvent?.Invoke();
     }
 }

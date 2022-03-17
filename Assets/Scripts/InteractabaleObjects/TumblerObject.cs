@@ -40,6 +40,5 @@ public class TumblerObject : BaseObject
             }
         }
         _canAction = true;
-        EndActionEvent?.Invoke();
     }
 }

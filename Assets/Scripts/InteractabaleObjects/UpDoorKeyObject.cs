@@ -73,8 +73,6 @@ public class UpDoorKeyObject : BaseObject
         }
         _upDoorKey.SetActive(false);
         _canAction = true;
-
-        EndActionEvent?.Invoke();
     }
 }
 

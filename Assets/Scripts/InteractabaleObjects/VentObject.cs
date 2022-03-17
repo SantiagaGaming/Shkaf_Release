@@ -40,7 +40,5 @@ public class VentObject : BaseObject
             }
         }
         _canAction = true;
-
-        EndActionEvent?.Invoke();
     }
 }

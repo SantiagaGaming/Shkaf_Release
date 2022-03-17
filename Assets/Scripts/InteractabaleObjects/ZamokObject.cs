@@ -109,7 +109,6 @@ public class ZamokObject : BaseObject
             _zamokBack.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
         _canAction = true;
-        EndActionEvent?.Invoke();
     }
 }
 
