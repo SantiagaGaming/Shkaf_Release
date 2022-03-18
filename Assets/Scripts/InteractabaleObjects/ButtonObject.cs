@@ -21,13 +21,13 @@ public class ButtonObject : BaseObject
         int x = 0;
         while (x<=17)
         {
-            transform.position -= new Vector3(0, 0, 0.0001f);
+            transform.localPosition += new Vector3(0.0001f, 0,0 );
             yield return new WaitForSeconds(0.03f);
             x++;
         }
         while (x>=0)
         {
-            transform.position += new Vector3(0, 0, 0.0001f);
+            transform.localPosition -= new Vector3(0.0001f, 0, 0);
             yield return new WaitForSeconds(0.03f);
             x--;
 

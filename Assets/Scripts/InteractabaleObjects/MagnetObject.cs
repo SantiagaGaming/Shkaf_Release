@@ -23,7 +23,7 @@ public class MagnetObject : BaseObject
             int x = 0;
             while (x < 25)
             {
-                _magnet.transform.position += new Vector3(0.01f, 0, 0);
+                _magnet.transform.localPosition += new Vector3(0.01f, 0, 0);
                 yield return new WaitForSeconds(0.03f);
                 x++;
             }
@@ -45,7 +45,7 @@ public class MagnetObject : BaseObject
 
             while (x > 0)
             {
-                _magnet.transform.position -= new Vector3(0.01f, 0, 0);
+                _magnet.transform.localPosition -= new Vector3(0.01f, 0, 0);
                 yield return new WaitForSeconds(0.03f);
                 x--;
             }

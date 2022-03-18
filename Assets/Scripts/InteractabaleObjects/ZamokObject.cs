@@ -37,7 +37,7 @@ public class ZamokObject : BaseObject
             int keyX = 0;
             while (keyX < 80)
             {
-                _key.transform.position += new Vector3(0.001f, 0, 0);
+                _key.transform.localPosition += new Vector3(0.001f, 0, 0);
                 keyX++;
                 yield return new WaitForSeconds(0.01f);
             }
@@ -94,7 +94,7 @@ public class ZamokObject : BaseObject
             int keyX = 80;
             while (keyX > 0)
             {
-                _key.transform.position -= new Vector3(0.001f, 0, 0);
+                _key.transform.localPosition -= new Vector3(0.001f, 0, 0);
                 keyX--;
                 yield return new WaitForSeconds(0.01f);
             }

@@ -24,7 +24,8 @@ public class UpDoorKeyObject : BaseObject
             int z = 0;
             while (z <= 7)
             {
-                _upDoorKey.transform.position += new Vector3(0.008f, 0, 0);
+                
+                _upDoorKey.transform.localPosition += new Vector3(0.008f, 0, 0);
                 z++;
                 yield return new WaitForSeconds(0.05f);
             }
@@ -39,7 +40,7 @@ public class UpDoorKeyObject : BaseObject
        
             while (z > 0)
             {
-                _upDoorKey.transform.position -= new Vector3(0.008f, 0,0 );
+                _upDoorKey.transform.localPosition -= new Vector3(0.008f, 0,0 );
                 z--;
                 yield return new WaitForSeconds(0.05f);
             }
@@ -49,7 +50,7 @@ public class UpDoorKeyObject : BaseObject
             int z = 0;
             while (z <= 7)
             {
-                _upDoorKey.transform.position += new Vector3(0.008f, 0,0 );
+                _upDoorKey.transform.localPosition += new Vector3(0.008f, 0,0 );
                 z++;
                 yield return new WaitForSeconds(0.05f);
             }
@@ -65,7 +66,7 @@ public class UpDoorKeyObject : BaseObject
             
             while (z > 0)
             {
-                _upDoorKey.transform.position -= new Vector3(0.008f, 0,0 );
+                _upDoorKey.transform.localPosition -= new Vector3(0.008f, 0,0 );
                 z--;
                 yield return new WaitForSeconds(0.05f);
 
