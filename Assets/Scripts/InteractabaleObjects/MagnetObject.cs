@@ -16,7 +16,7 @@ public class MagnetObject : BaseObject
     }
     private IEnumerator MoveMagnet(bool value)
     {
-        _canAction = false;
+        canAction = false;
         if(value)
         {
             _magnet.SetActive(true);
@@ -51,7 +51,7 @@ public class MagnetObject : BaseObject
             }
             _magnet.SetActive(false);
         }
-        _canAction = true;    
+        canAction = true;    
     }
 
 }

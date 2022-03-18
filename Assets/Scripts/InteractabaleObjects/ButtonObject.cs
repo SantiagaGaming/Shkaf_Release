@@ -9,23 +9,30 @@ public class ButtonObject : BaseObject
 
         StartCoroutine(PushButton());
     }
+    public override void RevertAction()
+    {
+
+        StartCoroutine(PushButton());
+    }
 
     private IEnumerator PushButton()
     {
+        canAction = false;
         int x = 0;
-        while (x<=14)
+        while (x<=17)
         {
             transform.position -= new Vector3(0, 0, 0.0001f);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.03f);
             x++;
         }
         while (x>=0)
         {
             transform.position += new Vector3(0, 0, 0.0001f);
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.03f);
             x--;
 
         }
+        canAction = true;
     }
 }
 

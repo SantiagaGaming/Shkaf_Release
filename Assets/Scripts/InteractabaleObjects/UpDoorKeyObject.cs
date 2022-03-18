@@ -18,7 +18,7 @@ public class UpDoorKeyObject : BaseObject
     private IEnumerator MoveKey(bool value)
     {
         _upDoorKey.SetActive(true);
-        _canAction = false;
+        canAction = false;
         if(value)
         {
             int z = 0;
@@ -72,7 +72,7 @@ public class UpDoorKeyObject : BaseObject
             }
         }
         _upDoorKey.SetActive(false);
-        _canAction = true;
+        canAction = true;
     }
 }
 

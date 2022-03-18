@@ -20,7 +20,7 @@ public class ZamokObject : BaseObject
     }
     private IEnumerator OpenCloseLocker(bool value)
     {
-        _canAction = false;
+        canAction = false;
         if (value)
         {
             _key.SetActive(true);
@@ -108,7 +108,7 @@ public class ZamokObject : BaseObject
             }
             _zamokBack.transform.localRotation = Quaternion.Euler(0, 0, 0);
         }
-        _canAction = true;
+        canAction = true;
     }
 }
 

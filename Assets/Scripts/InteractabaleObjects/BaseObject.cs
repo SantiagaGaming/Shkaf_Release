@@ -10,8 +10,8 @@ public abstract class BaseObject : MonoBehaviour, IClickAble, IHoverAble
 {
     public bool IsClickable { get; set; } = true;
     public bool IsHoverable { get; set; } = true;
-    protected bool _action = true;
-    protected bool _canAction = true;
+    protected bool action = true;
+    protected bool canAction = true;
 
     public virtual void StartAction()
     {
@@ -23,17 +23,17 @@ public abstract class BaseObject : MonoBehaviour, IClickAble, IHoverAble
     }
     public void OnClicked(InteractHand interactHand)
     {
-        if(_canAction)
+        if(canAction)
         {
-            if (_action)
+            if (action)
             {
                 StartAction();
-                _action = false;
+                action = false;
             }
             else
             {
                 RevertAction();
-                _action = true;
+                action = true;
             }
         }
 

@@ -16,7 +16,7 @@ public class VentObject : BaseObject
     }
     private IEnumerator RotateVent(bool value)
     {
-        _canAction = false;
+        canAction = false;
         if(value)
         {
             int x = 0;
@@ -39,6 +39,6 @@ public class VentObject : BaseObject
 
             }
         }
-        _canAction = true;
+        canAction = true;
     }
 }

@@ -16,7 +16,7 @@ public class TumblerObject : BaseObject
     }
     private IEnumerator RotateTumbler(bool value)
     {
-        _canAction = false;
+        canAction = false;
         if(value)
         {
             int x = 0;
@@ -39,6 +39,6 @@ public class TumblerObject : BaseObject
 
             }
         }
-        _canAction = true;
+        canAction = true;
     }
 }

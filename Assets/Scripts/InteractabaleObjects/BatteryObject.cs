@@ -18,7 +18,7 @@ public class BatteryObject : BaseObject
     private IEnumerator Move(bool value)
     {
         _batteryObj.SetActive(true);
-        _canAction = false;
+        canAction = false;
         int x = 0;
         while (x <= 26)
         {
@@ -33,6 +33,6 @@ public class BatteryObject : BaseObject
         }
         if (!value)
             _batteryObj.SetActive(false);
-        _canAction = true;
+        canAction = true;
     }
 }
