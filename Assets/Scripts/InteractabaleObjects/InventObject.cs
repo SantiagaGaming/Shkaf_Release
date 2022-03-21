@@ -29,13 +29,11 @@ public class InventObject : MonoBehaviour, IClickAble, IHoverAble
     }
     public void OnClicked(InteractHand interactHand)
     {
-        if(_invent.GetCurrentItem()=="")
+        if(_invent.GetCurrentItem()=="Null")
         {
             SentObjectNameEvent?.Invoke(_name);
             gameObject.SetActive(false);
-
         }
-
     }
     public override string ToString()
     {

@@ -16,7 +16,9 @@ public class Wire : MonoBehaviour
         if(_change)
         {
         transform.position = _newWirePosition.position;
-        StartCoroutine(MoveWire(true));
+        transform.rotation = _newWirePosition.rotation;
+
+            StartCoroutine(MoveWire(true));
         }
     }
     public void RevertAction()
@@ -26,6 +28,7 @@ public class Wire : MonoBehaviour
     }
     private IEnumerator MoveWire(bool value)
     {
+        transform.parent = null;
         _change = false;
         if (value)
         {
@@ -33,7 +36,7 @@ public class Wire : MonoBehaviour
             int y = 0;
             while (y <= 43)
             {
-                transform.position -= new Vector3(0, 0.001f, 0);
+                transform.localPosition -= new Vector3(0, 0.001f, 0);
                 y++;
                 yield return new WaitForSeconds(0.01f);
 
@@ -58,13 +61,14 @@ public class Wire : MonoBehaviour
             int y = 43;
             while (y >= 0)
             {
-                transform.position += new Vector3(0, 0.001f, 0);
+                transform.localPosition += new Vector3(0, 0.001f, 0);
                 y--;
                 yield return new WaitForSeconds(0.01f);
             }
             transform.position -= new Vector3(0, 0, 0.06f);
             _wire.SetActive(false);
         }
+        transform.SetParent(_newWirePosition);
         _change = true;
     }
     public void SetNewWirePosition(Transform newpos)
