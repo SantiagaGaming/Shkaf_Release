@@ -82,6 +82,5 @@ namespace AosSdk.Core.Utils.EditorUtils
     {
         public Dictionary<string, string> dependencies;
     }
-
-#endif
 }
+#endif
