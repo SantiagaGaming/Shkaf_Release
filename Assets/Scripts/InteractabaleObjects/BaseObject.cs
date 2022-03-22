@@ -41,10 +41,19 @@ public abstract class BaseObject : MonoBehaviour, IClickAble, IHoverAble
     }
     public void OnHoverIn(InteractHand interactHand)
     {
-        GetComponent<Renderer>().material.color *= 2;
+        if (GetComponent<Renderer>())
+            GetComponent<Renderer>().material.color *= 2;
+        else if (GetComponentInChildren<Renderer>())
+            GetComponentInChildren<Renderer>().material.color *= 2;
+        else return;
+
     }
     public void OnHoverOut(InteractHand interactHand)
     {
-        GetComponent<Renderer>().material.color /= 2;
+        if (GetComponent<Renderer>())
+            GetComponent<Renderer>().material.color /= 2;
+        else if (GetComponentInChildren<Renderer>())
+            GetComponentInChildren<Renderer>().material.color /= 2;
+        else return;
     }
 }

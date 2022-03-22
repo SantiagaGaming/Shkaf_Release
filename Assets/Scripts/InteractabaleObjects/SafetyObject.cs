@@ -6,29 +6,24 @@ using AosSdk.Core.Player.Pointer;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SafetyObject : MonoBehaviour, IClickAble, IHoverAble
+public class SafetyObject : BaseObject
 {
-    public UnityAction<string> PickedEvent;
+    public UnityAction<bool,string> PickedEvent;
     [SerializeField] private string _name;
-public bool IsClickable { get; set; } = true;
-public bool IsHoverable { get; set; } = true;
+    [SerializeField] private GameObject _safetyObject;
 
-public void OnHoverIn(InteractHand interactHand)
-{
-    GetComponent<Renderer>().material.color *= 2;
-}
-public void OnHoverOut(InteractHand interactHand)
-{
-    GetComponent<Renderer>().material.color /= 2;
-}
-    public void OnClicked(InteractHand interactHand)
+    public override void StartAction()
     {
-        PickedEvent?.Invoke(_name);
-        gameObject.SetActive(false);
+        PickedEvent?.Invoke(true, _name);
+        _safetyObject.SetActive(false);
+    }
+    public override void RevertAction()
+    {
+        PickedEvent?.Invoke(false, _name);
+        _safetyObject.SetActive(true);
     }
     public override string ToString()
     {
         return _name;
     }
-
 }

@@ -44,9 +44,9 @@ public class InventController : MonoBehaviour
     {
         _currentItem.ShowCurrentItem(name);
     }
-    private void OnShowSafetyIcon(string name)
+    private void OnShowSafetyIcon(bool value, string name)
     {
-        try { GameObject tempObj = _safetyIcons.FirstOrDefault(p => p.name == name); tempObj.SetActive(true); }
+        try { GameObject tempObj = _safetyIcons.FirstOrDefault(p => p.name == name); tempObj.SetActive(value); }
         catch { print("fail"); }
     }
 }
