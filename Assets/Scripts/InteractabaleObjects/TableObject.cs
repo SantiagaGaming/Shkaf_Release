@@ -14,11 +14,11 @@ public class TableObject : MonoBehaviour, IClickAble, IHoverAble
 
     public void OnHoverIn(InteractHand interactHand)
     {
-        GetComponent<Renderer>().material.color *= 2;
+        GetComponent<Renderer>().material.color *= 1.5f;
     }
     public void OnHoverOut(InteractHand interactHand)
     {
-        GetComponent<Renderer>().material.color /= 2;
+        GetComponent<Renderer>().material.color /= 1.5f;
     }
     public void OnClicked(InteractHand interactHand)
     {
