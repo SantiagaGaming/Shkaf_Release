@@ -19,7 +19,7 @@ public class ButtonObject : BaseObject
     {
         canAction = false;
         int x = 0;
-        while (x<=17)
+        while (x<=20)
         {
             transform.localPosition += new Vector3(0.0001f, 0,0 );
             yield return new WaitForSeconds(0.03f);
