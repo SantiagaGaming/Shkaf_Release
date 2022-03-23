@@ -5,7 +5,10 @@ using UnityEngine.Events;
 
 public class DoorObject : BaseObject
 {
-    [SerializeField] private GameObject _door;  
+    [SerializeField] private GameObject _door;
+    [SerializeField] private GameObject _bigProvod;
+    [SerializeField] private GameObject _midProvod;
+    [SerializeField] private GameObject _smallProvod;
     public override void StartAction()
     {
 
@@ -21,9 +24,15 @@ public class DoorObject : BaseObject
         if (value)
         {
             int y = 0;
-            while (y <= 95)
+            while (y <= 90)
             {
                 _door.transform.localRotation = Quaternion.Euler(0, y, 0);
+                if(_bigProvod!=null)
+                _bigProvod.transform.localRotation = Quaternion.Euler(0, y-90, 0);
+                if (_midProvod != null)
+                    _midProvod.transform.localRotation = Quaternion.Euler(0, y, 0);
+                if (_smallProvod != null)
+                    _smallProvod.transform.localRotation = Quaternion.Euler(0, y, 0);
                 y++;
                 yield return new WaitForSeconds(0.01f);
 
@@ -31,10 +40,16 @@ public class DoorObject : BaseObject
         }
         else
         {
-            int y = 95;
+            int y = 90;
             while (y >= 0)
             {
                 _door.transform.localRotation = Quaternion.Euler(0, y, 0);
+                if (_bigProvod != null)
+                    _bigProvod.transform.localRotation = Quaternion.Euler(0, y-90, 0);
+                if (_midProvod != null)
+                    _midProvod.transform.localRotation = Quaternion.Euler(0, y, 0);
+                if (_smallProvod != null)
+                    _smallProvod.transform.localRotation = Quaternion.Euler(0, y-20, 0);
                 y--;
                 yield return new WaitForSeconds(0.01f);
 
