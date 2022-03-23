@@ -45,6 +45,7 @@ public class ZamokObject : BaseObject
             while (keyXRot > -180)
             {
                 _key.transform.localRotation = Quaternion.Euler(keyXRot, 0, 0);
+                _zamokBack.transform.localRotation = Quaternion.Euler(keyXRot+90, 0, 0);
                 keyXRot--;
                 yield return new WaitForSeconds(0.01f);
             }
@@ -64,7 +65,6 @@ public class ZamokObject : BaseObject
                 yield return new WaitForSeconds(0.01f);
 
             }
-            _zamokBack.transform.localRotation = Quaternion.Euler(-90, 0, 0);
         }
         else
         {
@@ -88,6 +88,7 @@ public class ZamokObject : BaseObject
             while (keyXRot < -90)
             {
                 _key.transform.localRotation = Quaternion.Euler(keyXRot, 0, 0);
+                _zamokBack.transform.localRotation = Quaternion.Euler(keyXRot + 90, 0, 0);
                 keyXRot++;
                 yield return new WaitForSeconds(0.01f);
             }
@@ -106,7 +107,7 @@ public class ZamokObject : BaseObject
                 yield return new WaitForSeconds(0.01f);
 
             }
-            _zamokBack.transform.localRotation = Quaternion.Euler(0, 0, 0);
+          
         }
         canAction = true;
     }

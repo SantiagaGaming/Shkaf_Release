@@ -6,6 +6,7 @@ public class MagnetObject : BaseObject
 {
     [SerializeField] private GameObject _magnetRod;
     [SerializeField] private GameObject _magnet;
+    [SerializeField] private GameObject _backButton;
     public override void StartAction()
     {
         StartCoroutine(MoveMagnet(true));
@@ -30,6 +31,7 @@ public class MagnetObject : BaseObject
             while (x < 32)
             {
                 _magnetRod.transform.position -= new Vector3(0.0005f, 0, 0);
+                _backButton.transform.position -= new Vector3(0.0015f, 0, 0);
                 yield return new WaitForSeconds(0.03f);
                 x++;
             }
@@ -40,7 +42,9 @@ public class MagnetObject : BaseObject
             while (x > 25)
             {
                 _magnetRod.transform.position += new Vector3(0.0005f, 0, 0);
+                _backButton.transform.position += new Vector3(0.0015f, 0, 0);
                 x--;
+                yield return new WaitForSeconds(0.03f);
             }
 
             while (x > 0)
