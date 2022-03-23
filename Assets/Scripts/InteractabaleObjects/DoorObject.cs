@@ -9,6 +9,7 @@ public class DoorObject : BaseObject
     [SerializeField] private GameObject _bigProvod;
     [SerializeField] private GameObject _midProvod;
     [SerializeField] private GameObject _smallProvod;
+    [SerializeField] private bool _smallDoor;
     public override void StartAction()
     {
 
@@ -54,6 +55,8 @@ public class DoorObject : BaseObject
                 yield return new WaitForSeconds(0.01f);
 
             }
+            if(_smallDoor)
+            _door.transform.localRotation = Quaternion.Euler(0, 0.3f, 0);
         }
         canAction = true;
     }
