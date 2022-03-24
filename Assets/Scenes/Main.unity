@@ -1107,6 +1107,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e7245d8b0a7e2a4e9681c4b50864df5, type: 3}
+--- !u!1 &527726346 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1e7245d8b0a7e2a4e9681c4b50864df5, type: 3}
+  m_PrefabInstance: {fileID: 527726345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &527726347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527726346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc0339cbbb8da224e9eb0cb095f30795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: SkobaBig
+--- !u!65 &527726348
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527726346}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.017502308, y: 0.0049358145, z: 0.029556274}
+  m_Center: {x: 0.0006945133, y: 0.0017680109, z: 0.0035551968}
 --- !u!1001 &572453969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1164,6 +1195,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b7b996c6df386046a4c1eaa8633f659, type: 3}
+--- !u!1 &572453970 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3b7b996c6df386046a4c1eaa8633f659, type: 3}
+  m_PrefabInstance: {fileID: 572453969}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &572453971
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572453970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.017502308, y: 0.0049358145, z: 0.029556274}
+  m_Center: {x: 0.0006945133, y: 0.0017680109, z: 0.0035551968}
+--- !u!114 &572453972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 572453970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc0339cbbb8da224e9eb0cb095f30795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: SkobaSmall
 --- !u!114 &643310302 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3990025063966790348, guid: 10d43d09f9e97934ab83365eaaa843bc, type: 3}
@@ -3649,6 +3711,8 @@ MonoBehaviour:
   - {fileID: 168260834}
   - {fileID: 1135122672}
   - {fileID: 851293483}
+  - {fileID: 572453970}
+  - {fileID: 527726346}
   _currentItem: {fileID: 1992673417}
   _safetyIcons:
   - {fileID: 838774963}
@@ -4086,6 +4150,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9f48800a564ea29409c7cd8c7a9ada21, type: 3}
   - {fileID: 21300000, guid: d545cef9eb77a8841afff6fbb7ba6eba, type: 3}
   - {fileID: 21300000, guid: 1fb4aa764421f104a9955167b75d6c55, type: 3}
+  - {fileID: 21300000, guid: d2253575014937e42923c35edf015af7, type: 3}
+  - {fileID: 21300000, guid: d61fe71c1cfd8ce41946b907a4d3daab, type: 3}
 --- !u!1 &2007139402
 GameObject:
   m_ObjectHideFlags: 0
