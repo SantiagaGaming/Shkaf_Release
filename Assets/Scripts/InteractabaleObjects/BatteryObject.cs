@@ -1,11 +1,14 @@
+using AosSdk.Core.Player.Pointer;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BatteryObject : BaseObject
 {
-    [SerializeField] private GameObject _battery;
-    [SerializeField] private GameObject _batteryObj;
+    [SerializeField] private GameObject _number;
+    [SerializeField] private TextMeshProUGUI _textMesh;
+    [SerializeField] private string _numberText;
     public override void StartAction()
     {
 
@@ -15,24 +18,23 @@ public class BatteryObject : BaseObject
     {
         StartCoroutine(Move(false));
     }
+    public override void OnHoverIn(InteractHand interactHand)
+    {
+        base.OnHoverIn(interactHand);
+        _textMesh.text = _numberText;
+        _number.SetActive(true);
+    }
+    public override void OnHoverOut(InteractHand interactHand)
+    {
+        base.OnHoverOut(interactHand);
+        _number.SetActive(false);
+    }
     private IEnumerator Move(bool value)
     {
-        _batteryObj.SetActive(true);
-        canAction = false;
-        int x = 0;
-        while (x <= 26)
-        {
-     if(value)
-                _battery.transform.position += new Vector3(0.001f,0 , 0);
-     else
-                _battery.transform.position -= new Vector3(0.001f, 0, 0);
-            x++;
+
             yield return new WaitForSeconds(0.01f);
  
   
-        }
-        if (!value)
-            _batteryObj.SetActive(false);
         canAction = true;
     }
 }
