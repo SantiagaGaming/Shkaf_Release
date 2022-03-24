@@ -27,14 +27,14 @@ public abstract class BaseObject : MonoBehaviour, IClickAble, IHoverAble
         {
             if (action)
             {
-                StartAction();
                 action = false;
+                StartAction();
+           
             }
             else
             {
-                RevertAction();
                 action = true;
-            }
+                RevertAction();            }
         }
 
      
