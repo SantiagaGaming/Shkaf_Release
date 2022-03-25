@@ -4,18 +4,15 @@ using UnityEngine;
 
 public class LampObject : MonoBehaviour
 {
-    [SerializeField] private Color _color;
+    [SerializeField] private GameObject _color;
     private void Start()
     {
-        DisableLamp();
+        EnableLamp(true);
     }
 
-    public void EnableLamp()
+    public void EnableLamp(bool value)
     {
-        GetComponent<MeshRenderer>().material.color = _color;
+        _color.SetActive(value);
     }
-    public void DisableLamp()
-    {
-        GetComponent<MeshRenderer>().material.color = Color.gray;
-    }
+
 }

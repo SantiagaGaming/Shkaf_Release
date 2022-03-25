@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 283090557}
   - component: {fileID: 283090559}
   - component: {fileID: 283090558}
-  - component: {fileID: 283090560}
   m_Layer: 0
   m_Name: RedLight
   m_TagString: Untagged
@@ -82,19 +81,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &283090560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 283090556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b26c64d62d4d67408ffcb8ddc871e37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _color: {r: 1, g: 0.024271842, b: 0, a: 1}
 --- !u!1 &1607117604
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +92,6 @@ GameObject:
   - component: {fileID: 1607117605}
   - component: {fileID: 1607117607}
   - component: {fileID: 1607117606}
-  - component: {fileID: 1607117608}
   m_Layer: 0
   m_Name: GreenLight
   m_TagString: Untagged
@@ -177,19 +162,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1607117608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1607117604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b26c64d62d4d67408ffcb8ddc871e37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _color: {r: 0.3921569, g: 0.9921569, b: 0.2627451, a: 1}
 --- !u!1 &51905329804179760
 GameObject:
   m_ObjectHideFlags: 0
@@ -3074,8 +3046,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.088626385, y: 0.10174152, z: 0.048189178}
-  m_Center: {x: -0.00671155, y: 0.03109426, z: -0.06407228}
+  m_Size: {x: 0.06740474, y: 0.052944392, z: 0.03009415}
+  m_Center: {x: 0.0038992725, y: 0.006695699, z: -0.050114788}
 --- !u!114 &6053519418489825482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7016,8 +6988,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.088626385, y: 0.10174152, z: 0.060629383}
-  m_Center: {x: -0.00671155, y: 0.03109426, z: -0.07029238}
+  m_Size: {x: 0.06740474, y: 0.052944392, z: 0.02474976}
+  m_Center: {x: 0.0038992725, y: 0.006695699, z: -0.052786984}
 --- !u!114 &5034765577472735816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8740,8 +8712,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.088626385, y: 0.10174152, z: 0.048189178}
-  m_Center: {x: -0.00671155, y: 0.03109426, z: -0.06407228}
+  m_Size: {x: 0.06740474, y: 0.052944392, z: 0.024870396}
+  m_Center: {x: 0.0038992725, y: 0.006695699, z: -0.0802292}
 --- !u!114 &1058627119814824415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16466,6 +16438,7 @@ GameObject:
   - component: {fileID: 4514590104086940681}
   - component: {fileID: 1309594873131260286}
   - component: {fileID: 1471427976161199585}
+  - component: {fileID: 7448291580973865341}
   m_Layer: 0
   m_Name: lamp_red
   m_TagString: Untagged
@@ -16537,6 +16510,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7448291580973865341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719481784373610525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b26c64d62d4d67408ffcb8ddc871e37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _color: {fileID: 283090556}
 --- !u!1 &6720890402306041416
 GameObject:
   m_ObjectHideFlags: 0
@@ -20786,6 +20772,7 @@ GameObject:
   - component: {fileID: 4586134285247638459}
   - component: {fileID: 1231719786091206555}
   - component: {fileID: 1816937380248464446}
+  - component: {fileID: 950988143990002946}
   m_Layer: 0
   m_Name: lamp_green
   m_TagString: Untagged
@@ -20857,6 +20844,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &950988143990002946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9126168176069287012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b26c64d62d4d67408ffcb8ddc871e37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _color: {fileID: 1607117604}
 --- !u!1 &9181723146592129784
 GameObject:
   m_ObjectHideFlags: 0
