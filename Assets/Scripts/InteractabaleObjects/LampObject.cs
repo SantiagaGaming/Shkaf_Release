@@ -5,14 +5,14 @@ using UnityEngine;
 public class LampObject : MonoBehaviour
 {
     [SerializeField] private GameObject _color;
-    private void Start()
-    {
-        EnableLamp(true);
-    }
 
-    public void EnableLamp(bool value)
+    public void EnableLamp()
     {
-        _color.SetActive(value);
+        _color.SetActive(true);
+    }
+    public void DisableLamp()
+    {
+        _color.SetActive(false);
     }
 
 }
