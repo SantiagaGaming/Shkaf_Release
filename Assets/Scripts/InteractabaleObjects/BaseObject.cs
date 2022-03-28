@@ -12,7 +12,7 @@ public abstract class BaseObject : MonoBehaviour, IClickAble, IHoverAble
     public bool IsHoverable { get; set; } = true;
     protected bool action = true;
     protected bool canAction = true;
-
+    protected AOSClicked _aosClicked;
     public virtual void StartAction()
     {
        
@@ -23,6 +23,8 @@ public abstract class BaseObject : MonoBehaviour, IClickAble, IHoverAble
     }
     public void OnClicked(InteractHand interactHand)
     {
+        _aosClicked = FindObjectOfType<AOSClicked>();
+        _aosClicked.PlayerClickOnObject(gameObject.name);
         if(canAction)
         {
             if (action)
