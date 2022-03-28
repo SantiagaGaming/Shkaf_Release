@@ -7,7 +7,7 @@ using UnityEngine.Events;
 [AosObject(name: "Игрок кликнул на предмет")]
 public class AOSClicked : AosObjectBase
 {
-    [AosEvent(name: "Измерение точки событие")]
+    [AosEvent(name: "Игрок кликнул на объект")]
     public event AosEventHandlerWithAttribute OnPlayerClicked;
 
     public void PlayerClickOnObject(string name)

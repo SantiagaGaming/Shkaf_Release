@@ -6472,6 +6472,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shkaf
       objectReference: {fileID: 0}
+    - target: {fileID: 385453630757448476, guid: 10d43d09f9e97934ab83365eaaa843bc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999966
+      objectReference: {fileID: 0}
+    - target: {fileID: 385453630757448476, guid: 10d43d09f9e97934ab83365eaaa843bc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.0026179885
+      objectReference: {fileID: 0}
+    - target: {fileID: 385453630757448476, guid: 10d43d09f9e97934ab83365eaaa843bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 483259893763380511, guid: 10d43d09f9e97934ab83365eaaa843bc, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
