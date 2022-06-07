@@ -2643,11 +2643,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7969288616097644897, guid: 0ca0918b4ef944d268e55ca0c315c5d2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.86
+      value: 5.8
       objectReference: {fileID: 0}
     - target: {fileID: 7969288616097644897, guid: 0ca0918b4ef944d268e55ca0c315c5d2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.386
+      value: 2.388
       objectReference: {fileID: 0}
     - target: {fileID: 7969288616097644897, guid: 0ca0918b4ef944d268e55ca0c315c5d2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3595,7 +3595,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1341916729
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3678,7 +3678,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c45cb7dc36342714ab3df5f5e58b7bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _zoom: {fileID: 2038540590}
 --- !u!1 &1378164081
 GameObject:
   m_ObjectHideFlags: 0
@@ -5836,7 +5835,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917654a216a74ec47991ec4c473479ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _wheelAction:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Wheel
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: b22a4dcb-80ed-417a-9998-5033a9a5f6b8
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 3474637138919394722, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   _playerCamera: {fileID: 1467810345}
+  CanZoom: 1
 --- !u!4 &2038540591
 Transform:
   m_ObjectHideFlags: 0

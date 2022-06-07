@@ -1,4 +1,6 @@
-﻿using AosSdk.Core.Player.Pointer;
+﻿using AosSdk.Core.Interaction;
+using AosSdk.Core.Interaction.Interfaces;
+using AosSdk.Core.Player.Pointer;
 using AosSdk.Core.Utils;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -21,7 +23,9 @@ namespace AosSdk.Core.Player.DesktopPlayer
         [SerializeField] private InputActionProperty mouseXAction;
         [SerializeField] private InputActionProperty mouseYAction;
 
-        public bool CanRun { get; set; } = true; // TODO Move to IPlayer
+        [SerializeField] private Grabber grabber;
+
+        public bool CanRun { get; set; } = true;
         public bool CanMove { get; set; } = true;
 
         private Transform _playerTransform;
@@ -54,42 +58,42 @@ namespace AosSdk.Core.Player.DesktopPlayer
 
             mouseYAction.action.performed += context => _mouseInput.y = context.ReadValue<float>();
 
-            crouchAction.action.performed += _ =>  _isCrouching = true;
-            
+            crouchAction.action.performed += _ => _isCrouching = true;
+
             crouchAction.action.canceled += _ => _isCrouching = false;
 
             _playerTransform = transform;
-            
+
             _characterHeight = characterController.height;
-            
+
             _playerCameraTransform = playerCamera.transform;
         }
 
         public void TeleportTo(Transform target)
         {
-            characterController.enabled = false;
-            _playerTransform.position = target.position;
-            _playerTransform.rotation = target.rotation;
-            characterController.enabled = true;
+            var targetPosition = target.position;
+            TeleportTo(targetPosition.x, targetPosition.y, targetPosition.z);
         }
 
         public void TeleportTo(float x, float y, float z)
         {
-            _playerTransform.position = new Vector3(x, y, z);
+            _playerTransform.position =
+                new Vector3(x, y + (characterController.height / 2 - characterController.center.y), z);
         }
 
         public void TeleportTo(string objectName)
         {
             var target = GameObject.Find(objectName)?.transform;
 
-            if (!target)
+            if (target == null)
             {
-                RuntimeData.Instance.CurrentPlayer.ReportError($"Teleport to object failed, no object with name {objectName} found");
+                RuntimeData.Instance.CurrentPlayer.ReportError(
+                    $"Teleport to object failed, no object with name {objectName} found");
                 return;
             }
 
-            _playerTransform.position = target.position;
-            _playerTransform.rotation = target.rotation;
+            var targetPosition = target.position;
+            TeleportTo(targetPosition.x, targetPosition.y, targetPosition.z);
         }
 
         public void EnableCamera(bool value)
@@ -102,10 +106,61 @@ namespace AosSdk.Core.Player.DesktopPlayer
             rayCaster.enabled = value;
         }
 
+        public void GrabObject(string objectName, int hand)
+        {
+            if (hand != 0 && hand != 1)
+            {
+                Player.Instance.ReportError($"Unknown hand type {hand}");
+                return;
+            }
+
+            var gameObjectToGrab = GameObject.Find(objectName);
+
+            if (!gameObjectToGrab)
+            {
+                Player.Instance.ReportError($"Can't grab {objectName}: no object found");
+                return;
+            }
+
+            var grabbable = gameObjectToGrab.GetComponentInChildren<IGrabbable>();
+
+            if (grabbable == null)
+            {
+                Player.Instance.ReportError($"Can't grab {objectName}: object is not grabbable");
+                return;
+            }
+
+            grabber.TryGrabObject(InteractHand.Desktop, grabbable, gameObjectToGrab);
+        }
+
+        public void DropObject(int hand)
+        {
+            grabber.DropCurrentGrabbedObject();
+        }
+
+        public void SetCrouchState(bool state)
+        {
+            if (state)
+            {
+                characterController.height = _characterHeight / 2;
+                characterController.center = new Vector3(0, -_characterHeight / 4, 0);
+            }
+            else
+            {
+                characterController.height = _characterHeight;
+                characterController.center = new Vector3(0, 0, 0);
+            }
+        }
+
         private void Update()
         {
             try
             {
+                if (sdkSettings.movementType == DesktopMovementType.Teleport)
+                {
+                    return;
+                }
+
                 var forward = transform.TransformDirection(Vector3.forward);
                 var right = transform.TransformDirection(Vector3.right);
 
@@ -136,13 +191,11 @@ namespace AosSdk.Core.Player.DesktopPlayer
                         _isJumping = false;
                     }
 
-                    characterController.height = _characterHeight / 2;
-                    characterController.center = new Vector3(0, - _characterHeight / 4, 0);
+                    SetCrouchState(true);
                 }
                 else
                 {
-                    characterController.height = _characterHeight;
-                    characterController.center = new Vector3(0, 0, 0);
+                    SetCrouchState(false);
                 }
 
                 if (!characterController.isGrounded)
@@ -150,7 +203,8 @@ namespace AosSdk.Core.Player.DesktopPlayer
                     _moveDirection.y -= sdkSettings.gravity * Time.deltaTime;
                 }
 
-                if (!Physics.Raycast(transform.position + _moveDirection * characterController.skinWidth, -transform.up, out var hit))
+                if (!Physics.Raycast(transform.position + _moveDirection * characterController.skinWidth, -transform.up,
+                        out var hit))
                 {
                     return;
                 }
@@ -159,7 +213,7 @@ namespace AosSdk.Core.Player.DesktopPlayer
                 {
                     return;
                 }
-
+                
                 characterController.Move(_moveDirection * Time.deltaTime);
             }
             finally
@@ -167,7 +221,8 @@ namespace AosSdk.Core.Player.DesktopPlayer
                 _rotationX += -_mouseInput.y * sdkSettings.mouseLookSpeed;
 
                 _rotationX = Mathf.Clamp(_rotationX, -sdkSettings.mouseLookXLimit, sdkSettings.mouseLookXLimit);
-                _playerCameraTransform.localPosition = new Vector3(0,characterController.center.y + characterController.height / 2, 0);
+                _playerCameraTransform.localPosition =
+                    new Vector3(0, characterController.center.y + characterController.height / 2, 0);
                 _playerCameraTransform.localRotation = Quaternion.Euler(_rotationX, 0, 0);
                 transform.rotation *= Quaternion.Euler(0, _mouseInput.x * sdkSettings.mouseLookSpeed, 0);
             }
